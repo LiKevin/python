@@ -32,3 +32,40 @@ print a | b #set(['a', 'c', 'b', 'd', 'm', 'l', 'r', 'z'])
 
 #打印出a和b共有的字符集
 print a&b #set(['a', 'c'])
+
+#打印出a中出现b中没有的元素，或者a中不存在b中存在的项目
+print a^b #set(['b', 'd', 'm', 'l', 'r', 'z'])
+
+"""
+请 注意：union(), intersection(), difference() 和 symmetric_difference() 的非运算符（non-operator，就是形如 s.union()这样的）版本将会接受任何 iterable 作为参数。
+相反，它们的运算符版本（operator based counterparts）要求参数必须是 sets。
+这样可以避免潜在的错误，如：为了更可读而使用 set('abc') & 'cbs' 来替代 set('abc').intersection('cbs')。
+从 2.3.1 版本中做的更改：以前所有参数都必须是 sets。
+另 外，Set 和 ImmutableSet 两者都支持 set 与 set 之间的比较。
+两个 sets 在也只有在这种情况下是相等的：每一个 set 中的元素都是另一个中的元素（二者互为subset）。
+一个 set 比另一个 set 小，只有在第一个 set 是第二个 set 的 subset 时（是一个 subset，但是并不相等）。
+一个 set 比另一个 set 大，只有在第一个 set 是第二个 set 的 superset 时（是一个 superset，但是并不相等）。
+子 set 和相等比较并不产生完整的排序功能。例如：任意两个 sets 都不相等也不互为子 set，因此以下的运算都会返回 False：a<b, a==b, 或者a>b。因此，sets 不提供 __cmp__ 方法。"""
+
+print len(a-b)
+
+
+#从 set “s”中删除元素 x, 如果不存在则引发 KeyError
+a.remove('a')
+print a
+
+#如果在 set “s”中存在元素 x, 则删除
+a.discard('a')
+print a
+
+#删除并且返回 set “s”中的一个不确定的元素, 如果为空则引发 KeyError
+a.pop()
+print a
+
+#删除 set “s”中的所有元素
+a.clear()
+print a
+
+#向 set “s”中增加元素 x
+a.add('abc')
+print a
