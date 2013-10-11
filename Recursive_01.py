@@ -22,8 +22,15 @@ print c
 factorial(N-2)等等。
 """
 
-sum = 1
 
-for i in range(1,11):
-    sum = sum * i
-    print sum
+def sumCalc(n):
+    if n == 1:
+        sum = 1
+    else:
+        sum =  n + sumCalc(n-1)
+    return sum
+
+if __name__ == '__main__':
+    testSum = sumCalc(1000)
+
+    print testSum

@@ -1,15 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
-
-
-
-
-
-
-
-
-
 #print 'हिन्दी'.decode('utf-8')
 import sys
 
@@ -78,3 +68,13 @@ if k in t:
     print 'True'
 else:
     print 'False'
+
+k = '稍后登录'
+#c = k.decode('utf-8').encode('raw_unicode_escape')
+c = u'\u7a0d\u540e\u767b\u5f55'
+#print c
+#print c.decode('utf8')
+#print u'\u7a0d\u540e\u767b\u5f55'.decode('utf-8')
+
+print '-'*80
+print 'हिन्दी'.decode('utf-8').encode('raw_unicode_escape')
