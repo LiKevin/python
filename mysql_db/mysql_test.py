@@ -55,17 +55,14 @@ class MySql(object):
             for line in self.mysql.get_rows()[0]:
                 counter += 1
                 print '****', line, counter
-        except:
             print 'faile to load the test database'
 
-    def _cleanDatabase(self, tableNam ='', condition = ()):
-        k, v = condition
-        print k, v
-        try:
-            self.mysql.cmd_query('DELETE FROM %s WHERE %s = "%s";'%(tableNam, k, v))
-            self.mysql.cmd_query('COMMIT')
-        except:
-            print 'Failed to clean up the DATABASE'
+    def _cleanDatabase(self, tableNam ='', condition = ()): condition
+    try:
+        self.mysql.cmd_query('DELETE FROM %s WHERE %s = "%s";'%(tableNam, k, v))
+        self.mysql.cmd_query('COMMIT')
+    except:
+        print 'Failed to clean up the DATABASE'
 
 if __name__ == "__main__":
     attribDict = {'FeatureGroup' : 'VARCHAR (160)', 'Feature' : 'VARCHAR(60)', 'CaseName' : 'VARCHAR(256)', 'TestResult' : 'VARCHAR(20)', 'ExecDate' : 'DATETIME'}
@@ -79,3 +76,5 @@ if __name__ == "__main__":
     t._showContents(tableNam = 'test_table')
     t._cleanDatabase(tableNam = 'test_table', condition = ('Feature', 'Calling people'))
     t._showContents(tableNam = 'test_table')
+    except:
+        k, v = condition # the param & its values for clean up ==  the clear
