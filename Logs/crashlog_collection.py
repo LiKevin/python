@@ -91,7 +91,6 @@ def printDebuggingWindow(comment):
     print '# %s #' %comment
     print '#'*(commentLen+4)
 
-
 if __name__=='__main__':
 
 #    LOG_PARENT_DIR=r'C:\Users\k22li\workspace\gitHub\Python_Projects\python\Logs'

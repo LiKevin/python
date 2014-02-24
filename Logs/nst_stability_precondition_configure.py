@@ -15,4 +15,4 @@ SDCARD_APP_CRASH = r'/storage/sdcard1/logs/upload/ApplicationCrash'
 #
 #os.system('adb -s %s fe')
 
-print type(datetime.now()
+print type(datetime.now())
