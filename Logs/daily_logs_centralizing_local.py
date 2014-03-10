@@ -38,8 +38,8 @@ if __name__=='__main__':
 
     remoteN1ParentPath = 'k22li@10.233.7.215:~/N/NST_Home/TestResult'
     remoteN2ParentPath = 'root@10.233.19.232:/home/nst/TestResult'
+    localN2ParentPath = 'k22li@10.233.7.215:~/N/NST_Home/TestResult'
 
-    remoteN2ParentPath_2 = 'root@10.233.19.232:/home/nst_workstation_2/TestResult'
     localParentPath = r'c:/Users/k22li/AoL/nst_logs'
 #    localParentPath = os.path.join('c:\\', 'Users', 'k22li', 'AoL', 'nst_logs')
 
@@ -49,7 +49,7 @@ if __name__=='__main__':
     if productType in ['n1', 'N1', '1']:
         remotePath = remoteN1ParentPath
     else:
-        remotePath = remoteN2ParentPath_2
+        remotePath = localN2ParentPath
 #
 #    crashLogFolders = getAllCrashLogFolders(remotePath, productType)
 #    print crashLogFolders

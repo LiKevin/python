@@ -41,7 +41,7 @@ class XmlAnalyzer():
 if __name__ == '__main__':
 
 #    work_dir = r'C:\Users\k22li\Downloads\tools\Granite_Installation\Granite_ver1.3.6\test_sets\new_testset_results\xml'
-    work_dir = r'C:\Users\k22li\1H-2014_Projects\DFT_Pilot\2nd_Pilot\xml'
+    work_dir = r'C:\Users\k22li\1H-2014_Projects\RTAS\OnyxSS_DFT_Vodafone_WK07_18_02_Round 2_results\xml'
     F = Filer(work_dir)
     xmls, count = F.findAllXmlSources()
 
