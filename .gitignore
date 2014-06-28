@@ -1,0 +1,9 @@
+*.testplan
+*.txt
+*.xml
+*.csv
+*.xlsx
+*.mini
+*.full
+*.bak
+

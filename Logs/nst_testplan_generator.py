@@ -7,22 +7,20 @@ import sets
 import random
 
 #   path to all those available test scripts
-PATH_TO_TEST=r'C:\Users\k22li\workspace\bsta\bsta\cases\test'
+PATH_TO_TEST=r'C:\Users\k22li\workspace\bsta\bsta\NSTCaseForAthena\cases\test'
 #   path to the test environment where to fetch those test scripts for executions
-TARGET_PATH=r'/home/nst/NSTRunner/cases/test'
+TARGET_PATH=r'./NSTRunner/cases/test'
 #   path to NST test result storage
-RES_PATH=r'/home/nst/TestResult'
+RES_PATH=r'./TestResult'
 #   execution duration for nst runs
 EXEC_DURATION='120'
 BASIC_EXEC_DURATION='40'
 ADVANCED_EXEC_DURATION='60'
 MST_EXEC_DURATION = '20'
 
-#BASIC_EXEC_TUPLE = ('addAppointment.py', 'ddAppointmentToCalendar.py', 'addCalendarToActivityScreen.py', 'deleteAppointmentInTheCalendar.py', 'bluetoothSetting.py', 'call_fastlane.py', 'callFromMadeList.py', 'callFromMissedList.py', 'callFromPhonebook.py', 'callFromRecvList.py', 'changeWP.py', 'closeMusicPlayer.py', 'dataConn.py', 'listenDownloadedRingTone.py', 'downloadAndSetRingTone.py', 'deleteDownloadRingTone.py', 'downloadImageAndSetWallpaper.py', 'deleteDownloadedImage.py', 'downloadJavaApp.py', 'deleteDownloadedJavaApp.py', 'downloadVideoWithDRM.py', 'deleteDownloadedVideo.py', 'sendMMSWithAudio.py', 'openMMSWithAudio.py', 'sendMMSWithPic.py', 'openMMSWithImage.py', 'sendMMSWithVideo.py', 'openMMSWithVideo.py', 'sendSegSMS.py', 'openAndCloseRadio.py', 'openAndPlaybackDownloadedVideo.py', 'openBrowser.py', 'openDownloadedImage.py', 'deleteDownloadedImage.py', 'openDownloadedVideo.py', 'deleteDownloadedVideo.py', 'openEmail.py', 'openMusicPlayer.py', 'takePicture.py', 'openPicGallery.py', 'deletePicGallery.py', 'recordVideo.py', 'playVideoFromGallery.py', 'deleteVideoGallery.py', 'setAnAlarm.py', 'deleteAllAlarm.py', 'openPreloadGame.py', 'openSMS.py', 'addContact.py', 'deleteContact.py', 'ebuddy.py', 'javagame.py', 'mute_notification.py', 'navigateToLink.py', 'wifi_notification.py', 'playMusic.py', 'playVideoStreamingContentUsingDeviceBrowserAndVideoPlayer.py', 'recvCall.py', 'wifi_search.py', 'createDrafMail.py', 'sendEmail.py', 'createDrafMail.py', 'sendEmailWithAttach.py', 'setWallpaper.py', 'silentProfile.py', 'sms_fastlane.py', 'wlanFromSetting.py', 'data_settings.py')
-#BASIC_CASES = 'calc.py , callFromPhonebook.py , callFromRecvList.py , callFromMadeList.py , callFromMissedList.py , recvCall.py , addContact.py , deleteContact.py , sendSegSMS.py , openSMS.py , sendMMSWithAudio.py , openMMSWithAudio.py , sendMMSWithVideo.py , openMMSWithVideo.py , sendMMSWithPic.py , openMMSWithImage.py , openBrowser.py , downloadAndSetRingTone.py , deleteDownloadRingTone.py , downloadImageAndSetWallpaper.py , deleteDownloadedImage.py , downloadVideoWithDRM.py , deleteDownloadedVideo.py , downloadJavaApp.py , deleteDownloadedJavaApp.py , listenDownloadedRingTone.py , openDownloadedImage.py , openAndPlaybackDownloadedVideo.py , addAppointmentToCalendar.py , addCalendarToActivityScreen.py , deleteAppointmentInTheCalendar.py , setAnAlarm.py , deleteAllAlarm.py , recordVideo.py , playVideoFromGallery.py , deleteVideoGallery.py , takePicture.py , openPicGallery.py , deletePicGallery.py , call_fastlane.py , sms_fastlane.py , openAndCloseRadio.py , playVideoStreamingContentUsingDeviceBrowserAndVideoPlayer.py , openMusicPlayer.py , playMusic.py , closeMusicPlayer.py , openPreloadGame.py , javagame.py , setWallpaper.py , changeWP.py , ebuddy.py , sendEmail.py , sendEmailWithAttach.py , createDrafMail.py , openEmail.py , bt_settings.py , wifi_settings.py , wifi_search.py , wifi_notification.py , bluetoothSetting.py , data_settings.py , data_notification.py , mute_notification.py , testPoxReferencePhone.py'
-BASIC_CASES = 'calc.py,callFromPhonebook.py,callFromRecvList.py,callFromMadeList.py,callFromMissedList.py,recvCall.py,addContact.py,deleteContact.py,sendSegSMS.py,openSMS.py,sendMMSWithAudio.py,openMMSWithAudio.py,sendMMSWithVideo.py,openMMSWithVideo.py,sendMMSWithPic.py,openMMSWithImage.py,openBrowser.py,downloadAndSetRingTone.py,listenDownloadedRingTone.py,deleteDownloadRingTone.py,downloadImageAndSetWallpaper.py,openDownloadedImage.py,deleteDownloadedImage.py,downloadVideoWithDRM.py,openAndPlaybackDownloadedVideo.py,deleteDownloadedVideo.py,downloadJavaApp.py,deleteDownloadedJavaApp.py,addAppointmentToCalendar.py,addCalendarToActivityScreen.py,deleteAppointmentInTheCalendar.py,setAnAlarm.py,deleteAllAlarm.py,recordVideo.py,playVideoFromGallery.py,deleteVideoGallery.py,takePicture.py,openPicGallery.py,deletePicGallery.py,call_fastlane.py,sms_fastlane.py,openAndCloseRadio.py,playVideoStreamingContentUsingDeviceBrowserAndVideoPlayer.py,openMusicPlayer.py,playMusic.py,closeMusicPlayer.py,openPreloadGame.py,javagame.py,setWallpaper.py,changeWP.py,ebuddy.py,sendEmail.py,sendEmailWithAttach.py,createDrafMail.py,openEmail.py,bt_settings.py,wifi_settings.py,wifi_search.py,wifi_notification.py,data_settings.py,data_notification.py,mute_notification.py,bluetoothSetting.py'
-BASIC_EXEC_TUPLE = BASIC_CASES.split(' , ')
-#USELESS_SCRIPTS = ['BlackScreen.py', 'calc01.py', 'calc2.py', 'rpcCall.py', 'settingsSample.py', 'test_scenario3.py', 'inputTest.py', 'phoneCall_PlayMusic.py', 'testPoxReferencePhone.py', 'listenDownloadedRing.py', 'deleteDownloadedRing.py', 'test.py', 'bt_settings.py', 'wifi_settings.py', 'data_notification.py']
+BASIC_CASES = 'MTBF59000101_HomeScreenSwipeLeftAndRight.py,MTBF59000102_HomeScreenFastlaneBasicUsage.py,MTBF59000103_HomeScreenLockUnlockDevice.py,MTBF59000104_HomeScreenPinUnpinApp.py,MTBF59000201_DualSIMSelectPreferredSIM.py,MTBF59000301_ContactsAddContactInDialer.py,MTBF59000302_ContactsAddContactInContacts.py,MTBF59000303_ContactsDeleteContact.py,MTBF59000401_CreateMOCallViaPB.py,MTBF59000402_CreateMOCallViaDialerAndBeRejected.py,MTBF59000403_ActivateAndDeactivateIHFInMOCall.py,MTBF59000404_Create2GMOCallViaPB.py,MTBF59000405_Create3GMOCallViaPB.py,MTBF59000406_ReceiveAndRejectMTCall.py,MTBF59000407_MuteAndUnmuteActiveMTCall.py,MTBF59000408_ReceiveAndAnswerMTCallIn2GMode.py,MTBF59000409_ReceiveAndAnswerMTCallIn3GMode.py,MTBF59000410_CreateMOCallViaSIM2.py,MTBF59000501_SendSMSToRemotePhone.py,MTBF59000502_SendAndReceiveSMSIn2GMode.py,MTBF59000503_SendAndReceiveSMSIn3GMode.py,MTBF59000504_ReceiveMMSFromRemoteAndOpenIt.py,MTBF59000505_SendPictureMMSToOwnNumber.py,MTBF59000506_ReplyWithSMSToReceivedMMS.py,MTBF59000507_DeleteLatestReceivedMMS.py,MTBF59000508_SendMMSWithImageToRemotePhone2G.py,MTBF59000509_SendMMSWithNewImageToRemotePhone3G.py,MTBF59000510_OpenUpdateAndCloseEmail.py,MTBF59000511_SendReceiveEmailVia2G.py,MTBF59000512_ShareImageFromGalleryViaEmail.py,MTBF59000513_SendReceiveEmailWithAttachmentVia3G.py,MTBF59000601_CaptureImage.py,MTBF59000602_ZoomAndCaptureImage.py,MTBF59000603_CaptureVideo.py,MTBF59000701_VideoPlaybackControl.py,MTBF59000801_OpenCapturedPhotoFromGallery.py,MTBF59000802_PinchZoomAPhotoInGallery.py,MTBF59000803_SetImageAsWallpaper.py,MTBF59000804_DeleteImageFromGallery.py,MTBF59000901_BrowseToAWebPage.py,MTBF59001001_PlayMusicViaMusicPlayer.py,MTBF59001201_OpenAndStartANewGame.py,MTBF59001202_SetAlarmAndWaitForExpiration.py,MTBF59001401_SwitchBTOnOffViaNotificationDrawer.py,MTBF59001402_SearchAvailableBluetoothDevices.py,MTBF59001403_SendDataViaBluetooth.py,MTBF59001404_SetMobileDataOnOffViaNotificationDrawer.py,MTBF59001405_SwitchWLANOnOffViaNotificationDrawer.py,MTBF59001406_SearchForWLANNetworks.py,MTBF59001501_MapsBasicOptions.py,MTBF59001301_RadioOnOff.py,MTBF59001302_RadioTuning.py,MTBF59001203_DownloadAnAppFromStoreAndUseIt.py,MTBF59001204_AddAppointmentToCalendar.py,MTBF59001205_EditCalendarAppointment.py,MTBF59001206_AddAppointmentToCalendarAndRemoveViaFastLane.py,MTBF59001101_ChangeRingtone.py,MTBF59001102_ChangeScreenBrightness.py,MTBF59000902_VideoStreamingViaWLAN.py,MTBF59000903_PinchZoomAWebPage.py,MTBF59000904_ReceiveMTCallWhileBrowsing.py,MTBF59000905_BrowseToAWebPageVia2G.py,MTBF59000906_BrowseToAWebPageViaBookmarksVia3G.py,MTBF59000907_VideoStreaming3G.py,MTBF59000910_BrowseToAWebPage_Opera.py,MTBF59000911_VideoStreamingViaWLAN_Opera.py,MTBF59000912_PinchZoomAWebPage_Opera.py,MTBF59000913_ReceiveMTCallWhileBrowsing_Opera.py,MTBF59000914_BrowseToAWebPageVia2G_Opera.py,MTBF59000915_BrowseToAWebPageViaBookmarksVia3G_Opera.py,MTBF59000916_VideoStreaming3G_Opera.py'
+#BASIC_CASES = 'MTBF59000101_HomeScreenSwipeLeftAndRight.py,MTBF59000102_HomeScreenFastlaneBasicUsage.py,MTBF59000103_HomeScreenLockUnlockDevice.py,MTBF59000104_HomeScreenPinUnpinApp.py,MTBF59000201_DualSIMSelectPreferredSIM.py,MTBF59000301_ContactsAddContactInDialer.py,MTBF59000302_ContactsAddContactInContacts.py,MTBF59000303_ContactsDeleteContact.py,MTBF59000401_CreateMOCallViaPB.py,MTBF59000402_CreateMOCallViaDialerAndBeRejected.py,MTBF59000403_ActivateAndDeactivateIHFInMOCall.py,MTBF59000404_Create2GMOCallViaPB.py,MTBF59000405_Create3GMOCallViaPB.py,MTBF59000406_ReceiveAndRejectMTCall.py,MTBF59000407_MuteAndUnmuteActiveMTCall.py,MTBF59000408_ReceiveAndAnswerMTCallIn2GMode.py,MTBF59000409_ReceiveAndAnswerMTCallIn3GMode.py,MTBF59000410_CreateMOCallViaSIM2.py,MTBF59000501_SendSMSToRemotePhone.py,MTBF59000502_SendAndReceiveSMSIn2GMode.py,MTBF59000503_SendAndReceiveSMSIn3GMode.py,MTBF59000504_ReceiveMMSFromRemoteAndOpenIt.py,MTBF59000505_SendPictureMMSToOwnNumber.py,MTBF59000506_ReplyWithSMSToReceivedMMS.py,MTBF59000507_DeleteLatestReceivedMMS.py,MTBF59000508_SendMMSWithImageToRemotePhone2G.py,MTBF59000509_SendMMSWithNewImageToRemotePhone3G.py,MTBF59000510_OpenUpdateAndCloseEmail.py,MTBF59000511_SendReceiveEmailVia2G.py,MTBF59000512_ShareImageFromGalleryViaEmail.py,MTBF59000513_SendReceiveEmailWithAttachmentVia3G.py,MTBF59000601_CaptureImage.py,MTBF59000602_ZoomAndCaptureImage.py,MTBF59000603_CaptureVideo.py,MTBF59000701_VideoPlaybackControl.py,MTBF59000801_OpenCapturedPhotoFromGallery.py,MTBF59000802_PinchZoomAPhotoInGallery.py,MTBF59000803_SetImageAsWallpaper.py,MTBF59000804_DeleteImageFromGallery.py,MTBF59000901_BrowseToAWebPage.py,MTBF59001001_PlayMusicViaMusicPlayer.py,MTBF59001201_OpenAndStartANewGame.py,MTBF59001202_SetAlarmAndWaitForExpiration.py,MTBF59001401_SwitchBTOnOffViaNotificationDrawer.py,MTBF59001402_SearchAvailableBluetoothDevices.py,MTBF59001403_SendDataViaBluetooth.py,MTBF59001404_SetMobileDataOnOffViaNotificationDrawer.py,MTBF59001405_SwitchWLANOnOffViaNotificationDrawer.py,MTBF59001406_SearchForWLANNetworks.py,MTBF59001501_MapsBasicOptions.py,MTBF59001301_RadioOnOff.py,MTBF59001302_RadioTuning.py,MTBF59001203_DownloadAnAppFromStoreAndUseIt.py,MTBF59001204_AddAppointmentToCalendar.py,MTBF59001205_EditCalendarAppointment.py,MTBF59001206_AddAppointmentToCalendarAndRemoveViaFastLane.py,MTBF59001101_ChangeRingtone.py,MTBF59001102_ChangeScreenBrightness.py,MTBF59000902_VideoStreamingViaWLAN.py,MTBF59000903_PinchZoomAWebPage.py,MTBF59000904_ReceiveMTCallWhileBrowsing.py,MTBF59000905_BrowseToAWebPageVia2G.py,MTBF59000906_BrowseToAWebPageViaBookmarksVia3G.py,MTBF59000907_VideoStreaming3G.py,MTBF59000910_BrowseToAWebPage_Opera.py, MTBF59000911_VideoStreamingViaWLAN_Opera.py	MTBF59000912_PinchZoomAWebPage_Opera.py, MTBF59000913_ReceiveMTCallWhileBrowsing_Opera.py, MTBF59000914_BrowseToAWebPageVia2G_Opera.py, MTBF59000915_BrowseToAWebPageViaBookmarksVia3G_Opera.py, MTBF59000916_VideoStreaming3G_Opera.py'
+BASIC_EXEC_TUPLE = BASIC_CASES.split(',')
 USELESS_SCRIPTS = ['testPoxReferencePhone.py', 'bluetoothSetting.py']
 #######################################################################################################################
 #Sub-Functions
@@ -36,9 +34,15 @@ def listAllFiles(path):
 
 def removeNonPythonScripts(fileList):
 
-    if '__init__.py' in fileList:
-        fileList.remove('__init__.py')
+    for file in fileList:
+        if not (file.startswith('MTBF') and file.endswith(".py")):
+            fileList.remove(file)
+
     return fileList
+
+#    if '__init__.py' in fileList:
+#        fileList.remove('__init__.py')
+#    return fileList
 
 def caseFilter(fileName):
 
@@ -64,11 +68,11 @@ def caseFilter(fileName):
 
 def composeTestPlan(deviceIDs, caseList, randomizeEnable, whiteList, debug):
 
-    template='<testcase no="%s" name="" location="%s" refPhone = "%s"/>'
+    template='<testcase no="%s" name="" location="%s" refPhone = "%s" loops="10"/>'
 
-    prefix ="""<?xml version="1.0" encoding="utf-8"?>\n<testplan assignTo="%s" resultPath="%s" syncQRDLog="true">\n\t<target-device hwversion="" osversion="" deviceid=""/>\n\t<testtask id="1" type="monkeyrunner" timeout="%s">"""
+    prefix ="""<?xml version="1.0" encoding="utf-8"?>\n<testplan assignTo="%s" resultPath="%s" syncQRDLog="true">\n\t<target-device hwversion="" osversion="" deviceid=""/>\n\t<testtask id="1" type="nstrunner" timeout="%s">"""
 
-    taskTemplate='\t</testtask>\n\t<testtask id="%s" type="monkeyrunner" timeout="%s">'
+    taskTemplate='\t</testtask>\n\t<testtask id="%s" type="nstrunner" timeout="%s">'
 
     postfix = """\t</testtask>\n</testplan>"""
 
@@ -192,14 +196,17 @@ if __name__  == '__main__':
     cases = []
     N1DeviceGroup = 'a030623e,b3b9521d,1a2215a'
     N2DeviceGroup = '995b62e7,995b62f9,995b6330,995b63d2,99626218'
+    AthenaDeviceGroup = 'ff09db'
 
     productSelection = raw_input( \
-        'Would you like to create testplan.xml for N1 or N2?\nYour answer (n1 | n2) : ')
+        'Would you like to create testplan.xml for N1 or N2 or Athena?\nYour answer (n1 | n2| athena) : ')
 
     if productSelection in ['N1', 'n1', '1']:
         deviceGroup = N1DeviceGroup
     elif productSelection in ['N2', 'n2', '2']:
         deviceGroup = N2DeviceGroup
+    elif productSelection in ['Athena', 'athena', 'aol3']:
+        deviceGroup = AthenaDeviceGroup
     else:
         print 'Invalid product selection done, kindly recheck!'
 
