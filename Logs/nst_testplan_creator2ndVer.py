@@ -10,6 +10,12 @@ Inputs need to specify:
 
 Outputs:
 "*.full.testplan"/"*.mini.testplan" files to be created in your local address
+
+
+@ difference than 1st version:
+advanced test cases are also repeat configurable for each of the test instance; and the key is that basic & advanced \
+test cases should be listed separately.
+
 """
 
 import csv
@@ -19,10 +25,11 @@ import sets
 import re
 
 # to be modified for each different environment separately
-GIT_REPO_ADDRESS=r'C:\Users\k22li\workspace\bsta\bsta\NSTCaseForAthena\cases\test'
+GIT_REPO_ADDRESS=r'C:\Users\k22li\workspace\bsta\bsta\cases\cases\test'
+#GIT_REPO_ADDRESS=r'C:\Users\k22li\workspace\bsta\bsta\cases\cases\test'
 
 # basically no need to change, unless you've to update the test profile manually
-mtbfProfile = 'nst_mtbf_testprofile.csv'
+mtbfProfile = 'nst_mtbf_testprofile_libra.csv'
 
 # basically do not change, unless test environment changed accordingly
 RES_PATH=r'./nstrunner/cases/test/'
@@ -46,19 +53,19 @@ def _csvNstMtbfTestProfileWalkThrough(csvFile, testVariant):
                         bas_set.append(row)
 
                     elif row[1].lower() in ['advanced'] and _ensureTestScriptAvailableInGit(GIT_REPO_ADDRESS, row[3].rstrip()):
-                        adv_set.append(row)
+                        for rp in xrange(int(row[5])):
+                            adv_set.append(row)
 
                     elif row[1].lower() in ['mst'] and _ensureTestScriptAvailableInGit(GIT_REPO_ADDRESS, row[3].rstrip()):
                         mst_set.append(row)
 
-                    elif row[1].lower() in ['ba-adv'] and _ensureTestScriptAvailableInGit(GIT_REPO_ADDRESS, row[3].rstrip()):
-                        bas_set.append(row)
-                        adv_set.append(row)
+#                    elif row[1].lower() in ['ba-adv'] and _ensureTestScriptAvailableInGit(GIT_REPO_ADDRESS, row[3].rstrip()):
+#                        bas_set.append(row)
+#                        adv_set.append(row)
                     else:
                         bad_set.append(row)
 
     return bas_set, adv_set, mst_set, bad_set
-
 
 def _ensureTestScriptAvailableInGit(path, scriptName):
     """
@@ -84,7 +91,7 @@ def _composeTestPlanXml(deviceIDs, testPlanType, basicList, advancedList, mstLis
 
     template='<testcase no="%s" name="" location="%s" refPhone = "%s" loops="%s"/>'
 
-    prefix ="""<?xml version="1.0" encoding="utf-8"?>\n<testplan assignTo="" resultPath="%s" syncQRDLog="true">\n\t<target-device deviceid="%s" device-type="AoL15" ref-deviceid="874c6c93" ref-device-type="N"/>\n\t<testtask id="1" type="nstrunner" timeout="%s">"""
+    prefix ="""<?xml version="1.0" encoding="utf-8"?>\n<testplan assignTo="" resultPath="%s" syncQRDLog="true">\n\t<target-device deviceid="%s" device-type="AoL15" outofmemory-flag="True" ref-deviceid="9ddb61ba" ref-device-type="N"/>\n\t<testtask id="1" type="nstrunner" timeout="%s">"""
 
     taskTemplate='\t</testtask>\n\t<testtask id="%s" type="nstrunner" timeout="%s">'
 
@@ -121,10 +128,12 @@ def _composeTestPlanXml(deviceIDs, testPlanType, basicList, advancedList, mstLis
 
     elif testPlanType.lower() in ['full', 'f', 'full-mtbf']:
 
-        advancedList = advancedList * int(advRepeats)
+        #advancedList = advancedList * int(advRepeats)
 
         if advRandEnabler:
             random.shuffle(advancedList)
+
+        #print "#"*20, len(advancedList), "#"*20
 
         with open('nst_mtbf.full.testplan', 'w+') as filer:
             filer.write(prefix %(RES_PATH, deviceIDs, "40"))
@@ -136,6 +145,7 @@ def _composeTestPlanXml(deviceIDs, testPlanType, basicList, advancedList, mstLis
 
             filer.write(taskTemplate %('2', "60"))
             filer.write('\n')
+
             for case in advancedList:
                 refStatus = _checkRefPhoneNeededOrNot(case[3])
                 filer.write('\t\t'+template %(case[2], os.path.join(RES_PATH,case[3]), refStatus, 1))
@@ -152,9 +162,9 @@ def _composeTestPlanXml(deviceIDs, testPlanType, basicList, advancedList, mstLis
     else:
             print "Nothing to do .."
 
-#    print '*'*30+' Basic Case Number    : %3d '%(len(basicSet))+'*'*30
-#    print '*'*30+' Advanced Case Number : %3d '%(len(advancedSet))+'*'*30
-#    print '*'*30+' MST Case Number      : %3d '%(len(mstSet))+'*'*30
+    print '*'*30+' Basic Case Number    : %3d '%(len(basicList))+'*'*30
+    print '*'*30+' Advanced Case Number : %3d '%(len(advancedList))+'*'*30
+    print '*'*30+' MST Case Number      : %3d '%(len(mstList))+'*'*30
 
 
 if __name__ == '__main__':
@@ -180,7 +190,8 @@ if __name__ == '__main__':
     print ">>>>>>>>>>>>>> Start to generate testplan >>>>>>>>>>>>>>>>>>"
 
     basicCases, advancedCases, mstCases, nullCases= _csvNstMtbfTestProfileWalkThrough(mtbfProfile,swVariant)
-    _composeTestPlanXml("ff0a9e", testSetType, basicCases, advancedCases,mstCases, randomEnabler, 3)
+
+    _composeTestPlanXml("ff0a9e", testSetType, basicCases, advancedCases, mstCases, randomEnabler, 1)
 
     print ">>>>>>>>>>>>>>> Generate testplan done! >>>>>>>>>>>>>>>>>>>>"
 
