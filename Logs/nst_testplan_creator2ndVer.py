@@ -5,7 +5,9 @@ Purpose of this test script is to support generate the *.testplan file automatic
 NST environment.
 
 Inputs need to specify:
-1) GIT_REPO_ADDRESS  ---> test codes' local repo
+1) GIT_REPO_ADDRESS  ---> test code
+advanced test cases are also repeat configurable for each of the test instance; and the key is that basic & advanced \
+test cases should be listed separately.s' local repo
 2) mtbfProfile  --->  the configuration files for test cases selection
 
 Outputs:
@@ -13,8 +15,6 @@ Outputs:
 
 
 @ difference than 1st version:
-advanced test cases are also repeat configurable for each of the test instance; and the key is that basic & advanced \
-test cases should be listed separately.
 
 """
 
@@ -26,13 +26,15 @@ import re
 
 # to be modified for each different environment separately
 GIT_REPO_ADDRESS=r'C:\Users\k22li\workspace\bsta\bsta\cases\cases\test'
-#GIT_REPO_ADDRESS=r'C:\Users\k22li\workspace\bsta\bsta\cases\cases\test'
+#GIT_REPO_ADDRESS=r'C:\Users\k22li\workspace\bsta\bsta\NSTCaseForAthena\cases\test'
 
 # basically no need to change, unless you've to update the test profile manually
 mtbfProfile = 'nst_mtbf_testprofile_libra.csv'
+#mtbfProfile = 'nst_mtbf_testprofile_athena_wk28.3.csv'
+#mtbfProfile = 'nst_mtbf_testprofile_athena_ss_wk28.3.csv'
 
 # basically do not change, unless test environment changed accordingly
-RES_PATH=r'./nstrunner/cases/test/'
+RES_PATH=''
 
 
 def _csvNstMtbfTestProfileWalkThrough(csvFile, testVariant):

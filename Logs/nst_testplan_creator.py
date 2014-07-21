@@ -22,10 +22,10 @@ import re
 GIT_REPO_ADDRESS=r'C:\Users\k22li\workspace\bsta\bsta\NSTCaseForAthena\cases\test'
 
 # basically no need to change, unless you've to update the test profile manually
-mtbfProfile = 'nst_mtbf_testprofile.csv'
+mtbfProfile = 'nst_mtbf_testprofile_athena_wk28.3.csv'
 
 # basically do not change, unless test environment changed accordingly
-RES_PATH=r'./nstrunner/cases/test/'
+RES_PATH=''
 
 
 def _csvNstMtbfTestProfileWalkThrough(csvFile, testVariant):
