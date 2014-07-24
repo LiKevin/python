@@ -79,6 +79,8 @@ if __name__ == '__main__':
 
     list(ftp)
 
+    download(ftp, 'exersice8_ FTPLogin.py')
+
 #    for item in os.listdir(os.getcwd()):
 #        upload(ftp, item)
 #
