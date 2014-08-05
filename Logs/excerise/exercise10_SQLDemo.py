@@ -21,11 +21,10 @@ def getCursor(db):
 
     return db.cursor()
 
-def searchDB(db):
+def searchDB(db, sql):
 
     cursor = getCursor(db)
-    sql = 'SELECT * FROM test_case_table'
-
+#    sql = 'SELECT * FROM test_case_table'
     cursor.execute(sql)
     results = cursor.fetchall()
 
