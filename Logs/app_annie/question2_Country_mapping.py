@@ -13,19 +13,19 @@ def get_all_coordinates(lst):
     '''
     get & store each elements coordinates into a dict
     '''
-    results_dict = {}
+    coor_dict = {}
     x = -1
-    for outter_lst in lst:
-        x += 1
+    for o_lst in lst:
+        x += 1  # list.index() doesn't work here, becuase it can hardly figure out the dup elems in the same list
         y=-1
-        for elem in outter_lst:
+        for elem in o_lst:
             y += 1
-            if results_dict.has_key(elem):
-                results_dict[elem].append((x,y))
+            if coor_dict.has_key(elem):
+                coor_dict[elem].append((x,y))
             else:
-                results_dict.update({elem: [(x, y)]})
+                coor_dict.update({elem: [(x, y)]})
 
-    return results_dict
+    return coor_dict
 
 def analyze_related_coordinates_fixed(lst=[]):
     '''
@@ -38,7 +38,7 @@ def analyze_related_coordinates_fixed(lst=[]):
     # get the full list size
     length = len(lst)
     # for storing the numbers of the related coordinates to the 1st, 2nd, 3rd ... etc elements
-    relative_elem_numbers = []
+    independent_countries = []
     counter = 0
     while 1:
         if lst:
@@ -49,10 +49,10 @@ def analyze_related_coordinates_fixed(lst=[]):
                 if abs(x0-x1)+abs(y0-y1)== 1:  #break,once there is a relative item available from the rest of the list
                     break
             else:
-                relative_elem_numbers.append(elem) # recording the item so long as there isn't any relative ones
+                independent_countries.append(elem) # recording the item so long as there isn't any relative ones
         else:
             break
-    return len(relative_elem_numbers)
+    return len(independent_countries)
 
 def get_country_numbers(dct={}):
     '''

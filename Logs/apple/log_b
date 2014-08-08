@@ -1,0 +1,6 @@
+From user B sight, the log will be:
+
+Blog.txt
+10:00:03, <1023>,Incoming Call , A
+10:00:26, <1023>,Received, A
+10:02:31, <1023>,Disconnected, A

@@ -13,3 +13,4 @@ if __name__ == '__main__':
 
     for k in range(4, 24):
         print 'Factors for %s: %s' %(k, finding_factors(k))
+
