@@ -1,36 +1,33 @@
+# -*- coding: utf-8 -*-
 __author__ = 'k22li'
 
-for i in range(100,1000):
-    a = i%10
-    b = i%100//10
-    c = i//100
-    if a**3+b**3+c**3 == i:
-        print(i)
+#######################################################################################################################
+# function implementations
+# purpose is to:
+#  在100~1000 之间找出所有满足条件: 各位上的数字的三次方之和等于这个数的 数字 (水仙花)
+#######################################################################################################################
 
+def figure_out_matched_case(lower_limit, upper_limit):
+    for i in range(lower_limit,upper_limit):
+        a = i%10
+        b = i%100//10
+        c = i//100
+        if a**3+b**3+c**3 == i:
+            print(i)
 
-z=[ [1,2] , [3,4] , [1,2] , [5,6] , [7,8] , [9,0] , [3,4] , [1,2] , [7,8] ]
+def figure_out_special_case(lower_limit, upper_limit):
 
-print [ repr(list_item) for list_item in z]
+    for i in range(lower_limit, upper_limit):
+        i_str =  str(i)
+        a, b, c = i_str
+        if int(a)**3+int(b)**3+int(c)**3 == i:
+            print i
 
-#print type(eval('[1, 2]'))
+#######################################################################################################################
+# test code
+#######################################################################################################################
 
-zr = [repr(x) for x in z]
+if __name__ == '__main__':
 
-
-import sets
-
-zs = sets.Set(zr)
-
-print zs
-
-zf = [eval(x) for x in zs]
-print zf
-
-
-dct = dict(enumerate(z))
-try:
-    print dict(zip(dct.values(), dct.keys()))
-
-except TypeError as e:
-
-    print 'Error: %s' %e
+    figure_out_special_case(100, 1000)
+    figure_out_matched_case(100, 1000)

@@ -42,6 +42,8 @@ if __name__ == '__main__':
 
     # demo 3
     Foo.test_class_method()  # calling the class methods through class
+    print "testing the class methods"
+    Foo().test_class_method()
 
     # demo 4
     foo.test_class_method() # calling the class methods through instance
