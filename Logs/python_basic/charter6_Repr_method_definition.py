@@ -6,6 +6,9 @@ __author__ = 'k22li'
 # purpose is to:
 #   implement a method with which to define the calculations of encrypting a strings
 #######################################################################################################################
+
+# demo 1
+#######################################################################################################################
 class A(object):
 
     def __init__(self):
@@ -21,60 +24,72 @@ class A(object):
         return self.debugging
 
 
+# demo 2
+#######################################################################################################################
+class B_struct():
+
+    def __init__(self, name, age, sex):
+        self.name = name
+        self.age  = age
+        self.sex  = sex
+
+    def __repr__(self):
+        return '("%s", %s, "%s")'%(self.name, self.age, self.sex)
+
 #######################################################################################################################
 # test codes
 #######################################################################################################################
 if __name__ == '__main__':
 
-    # demo 1
-    ###################################################################################################################
-    print repr(A)
-    # output:
-    # <class '__main__.A'>, still the "object" class's __repr__() built-in method being called
-
-
-    # demo 2
-    ###################################################################################################################
-    a = A()
-    print repr(a)
-    # output:
-    # >>> This is the debugging info from the __repr__() methods...  now the the self defined the info being displayed; \
-    # purpose is to providing enough debugging info of this class.
-
-    # demo 3
-    ###################################################################################################################
-    print A.__repr__(a)
-    # output:
-    # >>> This is the debugging info from the __repr__() methods...  now the the self defined the info being displayed; \
-    # purpose is to providing enough debugging info of this class.
-
-
-    # demo 4
-    ###################################################################################################################
-    print a
-    # output:
-    # >>> This is the debugging info from the __str__() methods...
-    # but simply calling this object/class, by default would be the __str__() returns being provided;
-    #Fixme: but "__repr__()" would be called instead if without "__str__()" being defined
-
-    # demo 5
-    ###################################################################################################################
-    print '%s' %a
-    # output:
-    # >>> This is the debugging info from the __str__() methods...
-    # but simply calling this object/class, by default would be the __str__() returns being provided; "print()" method \
-    # will call for the "__str__()" methods defined in the object/ class by default;
-    #Fixme: but "__repr__()" would be called instead if without "__str__()" being defined
-
-    # demo 6
-    ###################################################################################################################
-    print '%r' %a
-    # output:
-    # >>> This is the debugging info from the __repr__() methods...
-    # by calling this "a" instance int he vorbose window, then by default this __repr__() returns displayed;
-    # also, by formatting the output to "%r" would be also by default would be the __repr__() returns being provided;
-    # Fixme:  also the desired state is that "eval(repr(object))" could regenerate the same class/ object/ instance;
-    # which was the key difference between __str__ & __repr__
+#    # demo 1
+#    ###################################################################################################################
+#    print repr(A)
+#    # output:
+#    # <class '__main__.A'>, still the "object" class's __repr__() built-in method being called
+#
+#
+#    # demo 2
+#    ###################################################################################################################
+#    a = A()
+#    print repr(a)
+#    # output:
+#    # >>> This is the debugging info from the __repr__() methods...  now the the self defined the info being displayed; \
+#    # purpose is to providing enough debugging info of this class.
+#
+#    # demo 3
+#    ###################################################################################################################
+#    print A.__repr__(a)
+#    # output:
+#    # >>> This is the debugging info from the __repr__() methods...  now the the self defined the info being displayed; \
+#    # purpose is to providing enough debugging info of this class.
+#
+#
+#    # demo 4
+#    ###################################################################################################################
+#    print a
+#    # output:
+#    # >>> This is the debugging info from the __str__() methods...
+#    # but simply calling this object/class, by default would be the __str__() returns being provided;
+#    #Fixme: but "__repr__()" would be called instead if without "__str__()" being defined
+#
+#    # demo 5
+#    ###################################################################################################################
+#    print '%s' %a
+#    # output:
+#    # >>> This is the debugging info from the __str__() methods...
+#    # but simply calling this object/class, by default would be the __str__() returns being provided; "print()" method \
+#    # will call for the "__str__()" methods defined in the object/ class by default;
+#    #Fixme: but "__repr__()" would be called instead if without "__str__()" being defined
+#
+#    # demo 6
+#    ###################################################################################################################
+#    print '%r' %a
+#    # output:
+#    # >>> This is the debugging info from the __repr__() methods...
+#    # by calling this "a" instance int he vorbose window, then by default this __repr__() returns displayed;
+#    # also, by formatting the output to "%r" would be also by default would be the __repr__() returns being provided;
+#    # Fixme:  also the desired state is that "eval(repr(object))" could regenerate the same class/ object/ instance;
+#    # which was the key difference between __str__ & __repr__
 
 # More info:
 # 内建函数str()和repr() (representation，表达，表示)或反引号操作符（``）可以方便地以字符串的方式获取对象的内容、类型、数值属性等信息。
@@ -88,5 +103,10 @@ if __name__ == '__main__':
 # Fixme: Python中，有的操作符和函数是做同样的事情，原因是某些场合下函数会比操作符更适合使用，比如函数对象可作为参数传递。
 # 双星号（＊＊）乘方运算和pow()内建函数都返回x的y次方.
 
-
+    # demo 6
+    ###################################################################################################################
+    instance_a = B_struct('Kevin Li', '32', 'M')
+    print repr(instance_a)
+    print type(repr(instance_a))
+    print type(eval(repr(instance_a)))
 
