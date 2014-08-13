@@ -211,7 +211,6 @@ if __name__ == '__main__':
 #    # test demo 1
 #    _test_dynamic_add_class_attr()
 
-
 #    _test_default_attrs_inheritated_from_obj()
 
     _test_dir_values_from_object_class_instance()
