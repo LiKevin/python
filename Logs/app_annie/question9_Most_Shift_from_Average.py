@@ -11,7 +11,7 @@ def get_most_far_item_from_average(aList):
     if len(aList) <= 1:
         return aList
     average = sum(aList)/len(aList)
-#    average = average(aList)
+
     aList.sort()
 
     return ((aList[0] + aList[-1])/2 < average and aList[0] or aList[-1], average)
