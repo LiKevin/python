@@ -42,3 +42,14 @@ if __name__ == '__main__':
 #    print ' the 2nd time of "exitfunc()" check hasn\'t started '.center(100, '*')
     debugging(' the 2nd time of "exitfunc()" check hasn\'t started ')
     check_exitfunc_availability()
+
+# outputs:
+#    it's true that there is already exitfunc registered
+#    outputs of <function _run_exitfuncs at 0x000000000240A358> is: None
+#    ########################### the 1st time of "exitfunc()" check is done ###########################
+#    ######################## the 2nd time of "exitfunc()" check hasn't started #######################
+#    it's true that there is already exitfunc registered
+#    Hello , Li Xiang-Micheal
+#    Hello , Jiang Ke-Cathy
+#    Hello , Li Zhihui-kevin
+#    outputs of <function _run_exitfuncs at 0x000000000240A358> is: None
